@@ -7,91 +7,87 @@ class ResponsiveView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MediaQuery(
-      data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
-      child: Scaffold(
-          body: SizedBox.expand(
-            child: Row(
-              children: [
-                ScreenTypeLayout.builder(
-                  mobile: (_) => const SizedBox(),
-                  tablet: (_) => const _NavigationRail(),
-                ),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        color: const Color(0xffFFF6E7),
-                        padding: const EdgeInsets.symmetric(horizontal: 25),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            const SizedBox(
-                              height: 103,
-                            ),
-                            Text(
-                              'Turismo',
+    return Scaffold(
+        body: SizedBox.expand(
+          child: Row(
+            children: [
+              ScreenTypeLayout.builder(
+                mobile: (_) => const SizedBox(),
+                tablet: (_) => const _NavigationRail(),
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      color: const Color(0xffFFF6E7),
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const SizedBox(
+                            height: 103,
+                          ),
+                          Text(
+                            'Turismo',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline1!
+                                .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                          ),
+                          const SizedBox(
+                            height: 9,
+                          ),
+                          Text(
+                              'Siempre hay un lugar por conocer y queremos acompañarte, ¡Tú eliges el lugar! ¿A dónde vamos 😃? ',
                               style: Theme.of(context)
                                   .textTheme
-                                  .headline1!
+                                  .subtitle2!
                                   .copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                            ),
-                            const SizedBox(
-                              height: 9,
-                            ),
-                            Text(
-                                'Siempre hay un lugar por conocer y queremos acompañarte, ¡Tú eliges el lugar! ¿A dónde vamos 😃? ',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle2!
-                                    .copyWith(
-                                      fontWeight: FontWeight.w400,
-                                    )),
-                            const SizedBox(
-                              height: 33,
-                            )
-                          ],
-                        ),
+                                    fontWeight: FontWeight.w400,
+                                  )),
+                          const SizedBox(
+                            height: 33,
+                          )
+                        ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: Text('POPULARES',
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle2!
-                                .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary)),
-                      ),
-                      const _PlaceCardList(),
-                      Padding(
-                        padding: const EdgeInsets.all(25.0),
-                        child: Text('RECOMENDADOS',
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle2!
-                                .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary)),
-                      ),
-                      const _RecommendedPlaceList(),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: Text('POPULARES',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.primary)),
+                    ),
+                    const _PlaceCardList(),
+                    Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: Text('RECOMENDADOS',
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle2!
+                              .copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.primary)),
+                    ),
+                    const _RecommendedPlaceList(),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          bottomNavigationBar: ScreenTypeLayout.builder(
-            mobile: (_) => const _BottomNavigationBar(),
-            tablet: (_) => const SizedBox(),
-            desktop: (_) => const SizedBox(),
-          )),
-    );
+        ),
+        bottomNavigationBar: ScreenTypeLayout.builder(
+          mobile: (_) => const _BottomNavigationBar(),
+          tablet: (_) => const SizedBox(),
+          desktop: (_) => const SizedBox(),
+        ));
   }
 }
 
